@@ -1,0 +1,282 @@
+{
+  "info": {
+    "name": "Blog API Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Postman collection for testing Blog API with Users, Posts, Comments, and Tags endpoints."
+  },
+  "item": [
+    {
+      "name": "List Users",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/users/",
+          "protocol": "http",
+          "host": [
+            "127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "users"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Single User with Posts",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/users/1/",
+          "protocol": "http",
+          "host": [
+            "127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "users",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "List Posts (paginated)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/posts/?page=1",
+          "protocol": "http",
+          "host": [
+            "127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "posts"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Search Posts",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/posts/?search=django",
+          "protocol": "http",
+          "host": [
+            "127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "posts"
+          ],
+          "query": [
+            {
+              "key": "search",
+              "value": "django"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Order Posts by Created",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/posts/?ordering=-created_at",
+          "protocol": "http",
+          "host": [
+            "127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "posts"
+          ],
+          "query": [
+            {
+              "key": "ordering",
+              "value": "-created_at"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Filter Posts by Tag",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/posts/?tags__name=django",
+          "protocol": "http",
+          "host": [
+            "127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "posts"
+          ],
+          "query": [
+            {
+              "key": "tags__name",
+              "value": "django"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create Post",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"title\": \"New Post\", \"content\": \"This is content\", \"user\": 1, \"tags\": [1]}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/posts/",
+          "protocol": "http",
+          "host": [
+            "127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "posts"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Single Post with Comments",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/posts/1/",
+          "protocol": "http",
+          "host": [
+            "127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "posts",
+            "1"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Add Comment to Post",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"content\": \"Great post!\", \"user\": 1}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/posts/1/comments/",
+          "protocol": "http",
+          "host": [
+            "127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "posts",
+            "1",
+            "comments"
+          ]
+        }
+      }
+    },
+    {
+      "name": "List Comments of Post",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/posts/1/comments/",
+          "protocol": "http",
+          "host": [
+            "127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "posts",
+            "1",
+            "comments"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Create Tag",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\": \"django\"}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/tags/",
+          "protocol": "http",
+          "host": [
+            "127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "tags"
+          ]
+        }
+      }
+    },
+    {
+      "name": "List Tags",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/tags/",
+          "protocol": "http",
+          "host": [
+            "127.0.0.1:8000"
+          ],
+          "path": [
+            "api",
+            "tags"
+          ]
+        }
+      }
+    }
+  ]
+}
